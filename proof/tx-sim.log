@@ -1,0 +1,12 @@
+﻿bridge_url: ws://127.0.0.1:49355
+hello: requiresAuth=true
+auth_ok
+simulation_command: /tx --command '{"op":"set_project_status","status":"MVP ready","note":"first demo"}' --sim 1
+query_command: /tx --command "read_project_status" --sim 1
+cli_result: command=/tx --command '{"op":"set_project_status","status":"MVP ready","note":"first demo"}' --sim 1
+cli_ok: true
+output: project status updated MVP ready
+cli_result: command=/tx --command "read_project_status" --sim 1
+cli_ok: true
+output: project/status: null
+

@@ -17,6 +17,12 @@ Intercom is a skill for autonomous agents (e.g., OpenClaw) that routes **all age
 - Keep competition metadata in `README.md` updated:
   - Trac payout address (`trac1...`) must be present and unique.
   - Proof artifacts should stay in `proof/`.
+- Required proof files:
+  - `proof/run.log`
+  - `proof/run-screenshot.png`
+  - `proof/command-mapping.log`
+  - `proof/tx-sim.log`
+  - `proof/README.md`
 - Do not remove upstream Intercom safety guidance (SC-Bridge-first, Pear runtime, version pins).
 
 ## Support

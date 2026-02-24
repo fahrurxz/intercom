@@ -12,11 +12,15 @@ At its core, Intercom is a **peer-to-peer (P2P) network**: peers discover each o
   - Runtime log: `proof/run.log`
   - Runtime screenshot: `proof/run-screenshot.png`
   - Protocol mapping proof: `proof/command-mapping.log`
+  - Runtime tx simulation proof: `proof/tx-sim.log`
 
 ### Custom app changes in this fork
 - Added contract command `set_project_status` to store app status on replicated state.
 - Added contract read command `read_project_status` to read the last status update.
 - Updated protocol command mapping and CLI help for these custom commands.
+- Competition tx examples:
+  - `/tx --command '{"op":"set_project_status","status":"MVP ready","note":"first demo"}'`
+  - `/tx --command "read_project_status"`
 
 Features:
 - **Sidechannels**: fast, ephemeral P2P messaging (with optional policy: welcome, owner-only write, invites, PoW, relaying).
