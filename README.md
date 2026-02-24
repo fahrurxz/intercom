@@ -4,7 +4,7 @@ This repository is a reference implementation of the **Intercom** stack on Trac 
 
 At its core, Intercom is a **peer-to-peer (P2P) network**: peers discover each other and communicate directly (with optional relaying) over the Trac/Holepunch stack (Hyperswarm/HyperDHT + Protomux). There is no central server required for sidechannel messaging.
 
-## Competition Eligibility (Intercom Vibe)
+## Competition Checklist (Intercom Vibe)
 - **Fork repo:** `https://github.com/fahrurxz/intercom`
 - **Custom app name:** `Intercom Project Status`
 - **Trac address (payout):** `trac1pxav50t6mhran2tf0dnvehg3tgpc2l05pc508zux50x46l07a0kqfdn74w`
