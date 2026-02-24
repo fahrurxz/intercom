@@ -60,6 +60,17 @@ class SampleContract extends Contract {
             }
         });
 
+        // custom fork command: keep a lightweight project status record.
+        this.addSchema('setProjectStatus', {
+            value : {
+                $$strict : true,
+                $$type: "object",
+                op : { type : "string", min : 1, max: 128 },
+                status : { type : "string", min : 1, max: 256 },
+                note : { type : "string", optional : true, max : 512 }
+            }
+        });
+
         // in preparation to add an external Feature (aka oracle), we add a loose schema to make sure
         // the Feature key is given properly. it's not required, but showcases that even these can be
         // sanitized.
@@ -72,6 +83,7 @@ class SampleContract extends Contract {
         this.addFunction('readSnapshot');
         this.addFunction('readChatLast');
         this.addFunction('readTimer');
+        this.addFunction('readProjectStatus');
         this.addSchema('readKey', {
             value : {
                 $$strict : true,
@@ -205,6 +217,17 @@ class SampleContract extends Contract {
         console.log('submitted by', this.address, parsed);
     }
 
+    async setProjectStatus() {
+        const currentTime = await this.get('currentTime');
+        await this.put('project/status', {
+            status: this.value.status,
+            note: this.value.note ?? null,
+            updatedBy: this.address,
+            updatedAt: currentTime ?? null
+        });
+        console.log('project status updated', this.value.status);
+    }
+
     async readSnapshot(){
         const something = await this.get('something');
         const currentTime = await this.get('currentTime');
@@ -234,6 +257,11 @@ class SampleContract extends Contract {
     async readTimer(){
         const currentTime = await this.get('currentTime');
         console.log('currentTime:', currentTime);
+    }
+
+    async readProjectStatus() {
+        const status = await this.get('project/status');
+        console.log('project/status:', status);
     }
 }
 

@@ -169,6 +169,10 @@ class SampleProtocol extends Protocol{
             obj.type = 'readTimer';
             obj.value = null;
             return obj;
+        } else if (command === 'read_project_status') {
+            obj.type = 'readProjectStatus';
+            obj.value = null;
+            return obj;
         } else {
             /*
             now we assume our protocol allows to submit a json string with information
@@ -184,6 +188,10 @@ class SampleProtocol extends Protocol{
             const json = this.safeJsonParse(command);
             if(json.op !== undefined && json.op === 'do_something'){
                 obj.type = 'submitSomething';
+                obj.value = json;
+                return obj;
+            } else if (json.op !== undefined && json.op === 'set_project_status') {
+                obj.type = 'setProjectStatus';
                 obj.value = json;
                 return obj;
             } else if (json.op !== undefined && json.op === 'read_key') {
@@ -218,6 +226,8 @@ class SampleProtocol extends Protocol{
         console.log('- /msb | prints MSB txv + lengths (local MSB node view).');
         console.log('- /tx --command "read_chat_last" | prints last chat message captured by contract.');
         console.log('- /tx --command "read_timer" | prints current timer feature value.');
+        console.log('- /tx --command \'{\"op\":\"set_project_status\",\"status\":\"live\",\"note\":\"ready\"}\' | stores project status in contract state.');
+        console.log('- /tx --command "read_project_status" | reads project status from contract state.');
         console.log('- /sc_join --channel "<name>" | join an ephemeral sidechannel (no autobase).');
         console.log('- /sc_open --channel "<name>" [--via "<channel>"] [--invite <json|b64|@file>] [--welcome <json|b64|@file>] | request others to open a sidechannel.');
         console.log('- /sc_send --channel "<name>" --message "<text>" [--invite <json|b64|@file>] | send message over sidechannel.');
