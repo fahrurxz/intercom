@@ -11,7 +11,7 @@ Intercom is a skill for autonomous agents (e.g., OpenClaw) that routes **all age
 ## Fork-Specific Agent Instructions (fahrurxz/intercom)
 - This fork must be treated as a custom app, not a vanilla upstream mirror.
 - Keep these custom tx commands available:
-  - `/tx --command '{"op":"set_project_status","status":"<text>","note":"<optional>"}'`
+  - `/tx --command '{"op":"set_project_status","status":"MVP ready","note":"first demo"}'`
   - `/tx --command "read_project_status"`
 - For demos/proofs, run one write and one read to show contract state changed.
 - Keep competition metadata in `README.md` updated:
